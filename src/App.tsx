@@ -118,10 +118,10 @@ function App() {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const [formData, setFormData] = React.useState({
-    name: '',
-    email: '',
+    Nome: '',
+    Email: '',
     Telefone: '',
-    investimento: ''
+    Investimento: ''
   });
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
@@ -163,10 +163,10 @@ function App() {
       setSubmitStatus('success');
       
       setFormData({
-        name: '',
-        email: '',
+        Nome: '',
+        Email: '',
         Telefone: '',
-        investimento: ''
+        Investimento: ''
       });
     }, 1000);
   };
@@ -372,24 +372,24 @@ function App() {
                 <input type="hidden" name="_next" value={window.location.href} />
                 
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-stone-700">Nome Completo</label>
+                  <label htmlFor="Nome" className="block text-sm font-medium text-stone-700">Nome Completo</label>
                   <input
                     type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    id="Nome"
+                    name="Nome"
+                    value={formData.Nome}
                     onChange={handleInputChange}
                     className="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-stone-700">Email</label>
+                  <label htmlFor="Email" className="block text-sm font-medium text-stone-700">Email</label>
                   <input
                     type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
+                    id="Email"
+                    name="Email"
+                    value={formData.Email}
                     onChange={handleInputChange}
                     className="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
                     required
@@ -408,12 +408,12 @@ function App() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="investimento" className="block text-sm font-medium text-stone-700">Faixa de Investimento Pretendida</label>
+                  <label htmlFor="Investimento" className="block text-sm font-medium text-stone-700">Faixa de Investimento Pretendida</label>
                   <input
                     type="text"
-                    id="investimento"
-                    name="investimento"
-                    value={formData.investimento}
+                    id="Investimento"
+                    name="Investimento"
+                    value={formData.Investimento}
                     onChange={handleInputChange}
                     className="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
                     required
