@@ -163,13 +163,14 @@ function App() {
 
     try {
       // Prepare the template parameters with all form data
+      // Make sure these parameter names match exactly with your EmailJS template variables
       const templateParams = {
         to_name: 'Administrador',
         to_email: 'sadilsonsamuel4@gmail.com',
-        from_name: formData.name,
-        from_email: formData.email,
-        phone: formData.phone,
-        investment: formData.investment,
+        name: formData.name,           // Variable for user's name
+        email: formData.email,         // Variable for user's email
+        phone: formData.phone,         // Variable for user's phone
+        investment: formData.investment, // Variable for investment range
         message: `Nova solicitação de associação ao Elite Club:\n\n
 Nome Completo: ${formData.name}\n
 Email: ${formData.email}\n
@@ -178,10 +179,12 @@ Faixa de Investimento: ${formData.investment}\n\n
 Data de envio: ${new Date().toLocaleString('pt-BR')}`
       };
 
+      console.log('Sending data to EmailJS:', templateParams);
+
       // Send the email using EmailJS
       const response = await emailjs.send(
         'service_h8j0a6u',
-        'template_test',
+        'template_njt6j09',
         templateParams,
         'KuUbgrhlXxe9fpam9'
       );
