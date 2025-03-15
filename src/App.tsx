@@ -162,21 +162,27 @@ function App() {
     setSubmitStatus('idle');
 
     try {
-      // Prepare the template parameters with all form data
-      // Make sure these parameter names match exactly with your EmailJS template variables
+      // Create a simple object with all form data
+      // Using standard parameter names that EmailJS templates typically expect
       const templateParams = {
-        to_name: 'Administrador',
-        to_email: 'sadilsonsamuel4@gmail.com',
-        name: formData.name,           // Variable for user's name
-        email: formData.email,         // Variable for user's email
-        phone: formData.phone,         // Variable for user's phone
-        investment: formData.investment, // Variable for investment range
-        message: `Nova solicitação de associação ao Elite Club:\n\n
-Nome Completo: ${formData.name}\n
-Email: ${formData.email}\n
-Telefone: ${formData.phone}\n
-Faixa de Investimento: ${formData.investment}\n\n
-Data de envio: ${new Date().toLocaleString('pt-BR')}`
+        user_name: formData.name,           // User's name
+        user_email: formData.email,         // User's email
+        user_phone: formData.phone,         // User's phone
+        user_investment: formData.investment, // Investment range
+        message_html: `
+          <h2>Nova solicitação de associação ao Elite Club</h2>
+          <p><strong>Nome Completo:</strong> ${formData.name}</p>
+          <p><strong>Email:</strong> ${formData.email}</p>
+          <p><strong>Telefone:</strong> ${formData.phone}</p>
+          <p><strong>Faixa de Investimento:</strong> ${formData.investment}</p>
+          <p><strong>Data de envio:</strong> ${new Date().toLocaleString('pt-BR')}</p>
+        `,
+        // Include individual fields as well to ensure they're available to the template
+        nome_completo: formData.name,
+        email_usuario: formData.email,
+        telefone: formData.phone,
+        investimento: formData.investment,
+        data_envio: new Date().toLocaleString('pt-BR')
       };
 
       console.log('Sending data to EmailJS:', templateParams);
