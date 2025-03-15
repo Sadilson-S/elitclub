@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased scroll-smooth overflow-x-hidden;
+  }
+  
+  input {
+    @apply p-2 border rounded-md;
+  }
+}
+
+.slick-dots {
+  bottom: 25px !important;
+}
+
+.slick-dots li button:before {
+  color: white !important;
+  font-size: 12px !important;
+  opacity: 0.5 !important;
+}
+
+.slick-dots li.slick-active button:before {
+  opacity: 1 !important;
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .slick-dots {
+    bottom: 10px !important;
+  }
+  
+  .container {
+    @apply px-4;
+  }
+}
