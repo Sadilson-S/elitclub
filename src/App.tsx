@@ -399,8 +399,8 @@ function App() {
                   <label htmlFor="Telefone" className="block text-sm font-medium text-stone-700">Telefone</label>
                   <input
                     type="tel"
-                    id="phone"
-                    name="phone"
+                    id="Telefone"
+                    name="Telefone"
                     value={formData.phone}
                     onChange={handleInputChange}
                     className="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
@@ -411,8 +411,8 @@ function App() {
                   <label htmlFor="investimento" className="block text-sm font-medium text-stone-700">Faixa de Investimento Pretendida</label>
                   <input
                     type="text"
-                    id="investment"
-                    name="investment"
+                    id="investimento"
+                    name="investimento"
                     value={formData.investment}
                     onChange={handleInputChange}
                     className="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
