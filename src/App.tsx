@@ -148,10 +148,9 @@ function App() {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const {  } = e.target;
     setFormData(prev => ({
       ...prev,
-      [name]: value
     }));
   };
 
