@@ -120,8 +120,8 @@ function App() {
   const [formData, setFormData] = React.useState({
     name: '',
     email: '',
-    phone: '',
-    investment: ''
+    Telefone: '',
+    investimento: ''
   });
 
   const scrollToSection = (ref: React.RefObject<HTMLDivElement>) => {
@@ -148,9 +148,10 @@ function App() {
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const {  } = e.target;
+    const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
+      [name]: value
     }));
   };
 
@@ -164,8 +165,8 @@ function App() {
       setFormData({
         name: '',
         email: '',
-        phone: '',
-        investment: ''
+        Telefone: '',
+        investimento: ''
       });
     }, 1000);
   };
@@ -400,7 +401,7 @@ function App() {
                     type="tel"
                     id="Telefone"
                     name="Telefone"
-                    value={formData.phone}
+                    value={formData.Telefone}
                     onChange={handleInputChange}
                     className="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
                     required
@@ -412,7 +413,7 @@ function App() {
                     type="text"
                     id="investimento"
                     name="investimento"
-                    value={formData.investment}
+                    value={formData.investimento}
                     onChange={handleInputChange}
                     className="mt-1 block w-full rounded-md border-stone-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
                     required
