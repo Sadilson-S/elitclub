@@ -162,38 +162,28 @@ function App() {
     setSubmitStatus('idle');
 
     try {
-      // Create a simple object with all form data
-      // Using standard parameter names that EmailJS templates typically expect
-      const templateParams = {
-        user_name: formData.name,           // User's name
-        user_email: formData.email,         // User's email
-        user_phone: formData.phone,         // User's phone
-        user_investment: formData.investment, // Investment range
-        message_html: `
-          <h2>Nova solicitação de associação ao Elite Club</h2>
-          <p><strong>Nome Completo:</strong> ${formData.name}</p>
-          <p><strong>Email:</strong> ${formData.email}</p>
-          <p><strong>Telefone:</strong> ${formData.phone}</p>
-          <p><strong>Faixa de Investimento:</strong> ${formData.investment}</p>
-          <p><strong>Data de envio:</strong> ${new Date().toLocaleString('pt-BR')}</p>
-        `,
-        // Include individual fields as well to ensure they're available to the template
-        nome_completo: formData.name,
-        email_usuario: formData.email,
-        telefone: formData.phone,
-        investimento: formData.investment,
-        data_envio: new Date().toLocaleString('pt-BR')
-      };
+      const formElement = e.target as HTMLFormElement;
+      
+      const hiddenInput = document.createElement('input');
+      hiddenInput.type = 'hidden';
+      hiddenInput.name = 'formatted_message';
+      hiddenInput.value = `
+        Nome Completo: ${formData.name}
+        Email: ${formData.email}
+        Telefone: ${formData.phone}
+        Faixa de Investimento: ${formData.investment}
+        Data de envio: ${new Date().toLocaleString('pt-BR')}
+      `;
+      formElement.appendChild(hiddenInput);
 
-      console.log('Sending data to EmailJS:', templateParams);
-
-      // Send the email using EmailJS
-      const response = await emailjs.send(
+      const response = await emailjs.sendForm(
         'service_h8j0a6u',
         'template_njt6j09',
-        templateParams,
+        formElement,
         'KuUbgrhlXxe9fpam9'
       );
+
+      formElement.removeChild(hiddenInput);
 
       console.log('Email enviado com sucesso:', response);
       setSubmitStatus('success');
