@@ -396,7 +396,7 @@ function App() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-stone-700">Telefone</label>
+                  <label htmlFor="Telefone" className="block text-sm font-medium text-stone-700">Telefone</label>
                   <input
                     type="tel"
                     id="phone"
@@ -408,7 +408,7 @@ function App() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="investment" className="block text-sm font-medium text-stone-700">Faixa de Investimento Pretendida</label>
+                  <label htmlFor="investimento" className="block text-sm font-medium text-stone-700">Faixa de Investimento Pretendida</label>
                   <input
                     type="text"
                     id="investment"
