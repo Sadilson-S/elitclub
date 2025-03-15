@@ -1,9 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useState, useRef } from 'react';
 import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 import { Menu, Home, Building2, UserPlus, MapPin, Phone, Mail, Star, Menu as MenuIcon } from 'lucide-react';
-import emailjs from '@emailjs/browser';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 
 const welcomeSlides = [
   {
@@ -156,49 +155,20 @@ function App() {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = () => {
     setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    try {
-      const formElement = e.target as HTMLFormElement;
-      
-      const hiddenInput = document.createElement('input');
-      hiddenInput.type = 'hidden';
-      hiddenInput.name = 'formatted_message';
-      hiddenInput.value = `
-        Nome Completo: ${formData.name}
-        Email: ${formData.email}
-        Telefone: ${formData.phone}
-        Faixa de Investimento: ${formData.investment}
-        Data de envio: ${new Date().toLocaleString('pt-BR')}
-      `;
-      formElement.appendChild(hiddenInput);
-
-      const response = await emailjs.sendForm(
-        'service_h8j0a6u',
-        'template_njt6j09',
-        formElement,
-        'KuUbgrhlXxe9fpam9'
-      );
-
-      formElement.removeChild(hiddenInput);
-
-      console.log('Email enviado com sucesso:', response);
+    
+    setTimeout(() => {
+      setIsSubmitting(false);
       setSubmitStatus('success');
+      
       setFormData({
         name: '',
         email: '',
         phone: '',
         investment: ''
       });
-    } catch (error) {
-      console.error('Erro ao enviar email:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
+    }, 1000);
   };
 
   return (
@@ -389,7 +359,18 @@ function App() {
           <div className="container mx-auto px-4">
             <div className="max-w-2xl mx-auto bg-white/95 backdrop-blur-sm rounded-lg shadow-2xl p-6 md:p-12">
               <h2 className="text-3xl md:text-4xl font-serif text-stone-800 mb-8 text-center">Associe-se ao Elite Club</h2>
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form 
+                action="https://formsubmit.co/sadilsonsamuel4@gmail.com" 
+                method="POST"
+                onSubmit={handleSubmit}
+                className="space-y-6"
+              >
+                {/* FormSubmit configuration */}
+                <input type="hidden" name="_subject" value="Nova solicitação de associação ao Elite Club" />
+                <input type="hidden" name="_template" value="table" />
+                <input type="hidden" name="_captcha" value="false" />
+                <input type="hidden" name="_next" value={window.location.href} />
+                
                 <div>
                   <label htmlFor="name" className="block text-sm font-medium text-stone-700">Nome Completo</label>
                   <input
@@ -449,7 +430,7 @@ function App() {
                   <p className="text-green-600 text-center mt-4">Mensagem enviada com sucesso!</p>
                 )}
                 {submitStatus === 'error' && (
-                  <p className="text-red-600 text-center mt-4">Erro ao enviar mensagem. Por favor, tente novamente.</p>
+                  <p className="text-red-600 text-center mt-4">Erro ao enviar mensagem. Tente novamente.</p>
                 )}
               </form>
             </div>
