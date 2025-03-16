@@ -360,7 +360,7 @@ function App() {
             <div className="max-w-2xl mx-auto bg-white/95 backdrop-blur-sm rounded-lg shadow-2xl p-6 md:p-12">
               <h2 className="text-3xl md:text-4xl font-serif text-stone-800 mb-8 text-center">Associe-se ao Elite Club</h2>
               <form 
-                action="https://formsubmit.co/camutofenomenal98@gmail.com" 
+                action="https://formsubmit.co/jmainsel1@gmail.com" 
                 method="POST"
                 onSubmit={handleSubmit}
                 className="space-y-6"
